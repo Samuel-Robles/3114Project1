@@ -46,8 +46,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return elementAt(findMin(root));
     }
 
-
-    // ----------------------------------------------------------
     /**
      * Find the largest item in the tree.
      *
@@ -57,32 +55,26 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return elementAt(findMax(root));
     }
 
-
-    // ----------------------------------------------------------
     /**
      * Find an item in the tree.
      *
-     * @param x
-     *            the item to search for.
+     * @param x the item to search for.
      * @return the matching item or null if not found.
      */
     public T find(T x) {
         return elementAt(find(x, root));
     }
 
-
-    // ----------------------------------------------------------
     /**
-     * Make the tree logically empty.
+     * Indirectly clear all elements in the tree
+     * by dereferencing the root.
      */
     public void makeEmpty() {
         root = null;
     }
 
-
-    // ----------------------------------------------------------
     /**
-     * Test if the tree is logically empty.
+     * Test if the tree is cleared
      *
      * @return true if empty, false otherwise.
      */
@@ -251,13 +243,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
 
     /**
-     * Gets an in-order string representation of the tree
-     * If the tree holds 5
-     * / \
-     * 2 6
-     * \
-     * 3
-     * It would print (2, 3, 5, 6)
+     * Gets an in-order string representation of the tree for testing
      * 
      * @return an in-order string representation of the tree
      */
