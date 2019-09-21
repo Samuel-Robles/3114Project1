@@ -18,6 +18,16 @@ public class Student implements ClassMember{
         firstName = fName;
         lastName = lName;
         studID = newID;
+        totGrade = 0;
+    }
+    
+    /**
+     * Creates a string of the student's ID, name, and grade
+     * @return the student's representation in string form
+     */
+    public String toString() {
+        return (studID + ", " + firstName + " " + lastName + 
+            ", score = " + String.valueOf(totGrade));
     }
     
     /**
