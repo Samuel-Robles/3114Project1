@@ -147,7 +147,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
         // If there's no more subtree to examine
         if (node == null) {
-            //TODO add new behavior for this exception
+            // TODO add new behavior for this exception
         }
 
         // if value should be to the left of the root

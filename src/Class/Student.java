@@ -73,13 +73,15 @@ public class Student implements ClassMember{
     }
     //---------------------------------------------
     
+    
     /**
      * A comparator for Students based on name
      * 
-     * @param compStudent is the student to compare with
-     * @return 0 if the names are identical, 
-     *          1 when compStudent < this,
-     *          -1 when this > compStudent
+     * @param compStudent
+     *            is the student to compare with
+     * @return 0 if the names are identical,
+     *         1 when compStudent < this,
+     *         -1 when this > compStudent
      */
     @Override
     public int compareTo(ClassMember compStudent) {
