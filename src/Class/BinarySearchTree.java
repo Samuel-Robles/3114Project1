@@ -1,5 +1,4 @@
-package binarySearchTree;
-import binarySearchTree.BinaryNode;
+package Class;
 
 public class BinarySearchTree<T extends Comparable<? super T>> {
     private BinaryNode<T> root;
@@ -82,6 +81,13 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return root == null;
     }
 
+    /**
+     * Returns the root of the tree
+     * @return the root
+     */
+    public BinaryNode<T> getRoot(){
+        return root;
+    }
 
     // ----------------------------------------------------------
     /**
