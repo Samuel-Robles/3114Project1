@@ -37,6 +37,10 @@ public class Coursemanager1 {
     private static Section[] allSects;
     //The current operational section
     private static int currSect;
+    //The active Student from the last search/insert
+    private static Student currStud;
+    //Checks if there is a current student
+    private static boolean isStud;
     
     /**
      * The main method that handles reading in from the file and calling the appropriate methods
@@ -64,15 +68,21 @@ public class Coursemanager1 {
                 System.out.println("Switched to section " + lineSpl[1]);
             }
             else if (cmd.equals("insert")) {
-                allSects[currSect].insert(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
+                currStud = allSects[currSect].insert(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
             }
             else if (cmd.equals("search")) {
                 if (lineSpl.length == 2) {
-                    allSects[currSect].search(lineSpl[1].toLowerCase());
+                    Student[] results = allSects[currSect].search(lineSpl[1].toLowerCase());
+                    if (results.length == 1) {
+                        currStud = results[0];
+                    }
                 }
                 if (lineSpl.length == 3) {
                     //TODO: search with two names
                 }
+            }
+            else if (cmd.equals("score")) {
+                
             }
         }
         file.close();
@@ -89,5 +99,6 @@ public class Coursemanager1 {
         allSects[1] = section2;
         allSects[2] = section3;
         currSect = -1;
+        isStud = false;
     }
 }

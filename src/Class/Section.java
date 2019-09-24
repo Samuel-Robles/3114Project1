@@ -134,7 +134,17 @@ public class Section {
         this.findNames(name, students.getRoot(), allFinds, 0);
         return allFinds;
     }
-
+    
+    /**
+     * Search for a specific student by name
+     * @param fName is the target first name
+     * @param lName is the target surname
+     * @return the student found or NULL if none
+     */
+    public Student search(String fName, String lName) {
+        Student target = new Student(fName, lName, "000000");
+        return students.find(target);
+    }
 
     /**
      * Prints out the contents of the section
