@@ -124,7 +124,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             node.setRight(insert(x, node.getRight()));
         }
         else {
-            //TODO add new exception for duplicates
+            throw new DuplicateItemException();
         }
         return node;
     }
@@ -147,7 +147,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
         // If there's no more subtree to examine
         if (node == null) {
-            // TODO add new behavior for this exception
+            throw new ItemNotFoundException();
         }
 
         // if value should be to the left of the root

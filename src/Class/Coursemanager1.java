@@ -1,5 +1,9 @@
 package Class;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 //On my honor:
 //
 //- I have not used source code obtained from another student,
@@ -24,11 +28,66 @@ package Class;
 public class Coursemanager1 {
 
     /**
+     * The three sections we will be working with for the project
+     */
+    private static Section section1;
+    private static Section section2;
+    private static Section section3;
+    // Holds all sections
+    private static Section[] allSects;
+    //The current operational section
+    private static int currSect;
+    
+    /**
      * The main method that handles reading in from the file and calling the appropriate methods
      * 
-     * @param args
+     * @param args are the target input file
+     * @throws FileNotFoundException when not given an input file
      */
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws FileNotFoundException {
+        declareSections();
+        String fileName;
+        if (args.length == 1) {
+            fileName = args[0];
+        }
+        else {
+            throw new FileNotFoundException("Please add a command file.");
+        }
+        File cmdFile = new File(fileName);
+        Scanner file = new Scanner(cmdFile);
+        while(file.hasNextLine()) {
+            String line = file.nextLine();
+            String[] lineSpl = line.split(" \t");
+            String cmd = lineSpl[0].toLowerCase();
+            if (cmd.equals("section")) {
+                currSect = Integer.parseInt(lineSpl[1]) - 1;
+                System.out.println("Switched to section " + lineSpl[1]);
+            }
+            else if (cmd.equals("insert")) {
+                allSects[currSect].insert(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
+            }
+            else if (cmd.equals("search")) {
+                if (lineSpl.length == 2) {
+                    allSects[currSect].search(lineSpl[1].toLowerCase());
+                }
+                if (lineSpl.length == 3) {
+                    //TODO: search with two names
+                }
+            }
+        }
+        file.close();
+    }
+    /**
+     * Declares all the relevant fields
+     */
+    private static void declareSections() {
+        allSects = new Section[3];
+        section1 = new Section(1);
+        section2 = new Section(2);
+        section3 = new Section(3);
+        allSects[0] = section1;
+        allSects[1] = section2;
+        allSects[2] = section3;
+        currSect = -1;
     }
 }
