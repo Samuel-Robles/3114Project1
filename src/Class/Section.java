@@ -4,7 +4,11 @@
 package Class;
 
 /**
- * @author samue
+ * This class represents a section of a course. It contains a binary search tree
+ * that stores students, and contains methods that allows
+ * for the modifying of this BST.
+ * 
+ * @author robleshs
  *
  */
 public class Section {
@@ -53,17 +57,20 @@ public class Section {
         try {
             students.insert(newStu);
         }
-        catch (Exception e) {
+        catch (DuplicateItemException e) {
             size -= 1;
             currID--;
             int sectionNum = (currID - (size + 1)) / 10000;
             newStu = (Student)students.find(newStu);
-            System.out.println(first + last + "is already in section "
-                + sectionNum);
-            System.out.println(newStu.getID() + ", " + newStu.getFirstName()
-                + " " + newStu.getLastName() + ", score = " + Integer.toString(
-                    newStu.getGrade()));
+            String err1 = first + last + "is already in section " + sectionNum;
+            System.out.println(err1);
+            String err2 = newStu.getID() + ", " + newStu.getFirstName() + " "
+                + newStu.getLastName() + ", score = " + Integer.toString(newStu
+                    .getGrade());
+            System.out.println(err2);
+            return newStu;
         }
+        System.out.println(first + " " + last + " inserted");
         return newStu;
     }
 
@@ -88,12 +95,13 @@ public class Section {
         try {
             students.remove(placeHolder);
         }
-        catch (Exception e) {
+        catch (ItemNotFoundException e) {
             size += 1;
             int sectionNum = (currID - (size + 1)) / 10000;
-            System.out.println("Remove failed. " + first + last
+            String err = "Remove failed. " + first + last
                 + " student doesn't exist in section " + Integer.toString(
-                    sectionNum));
+                    sectionNum);
+            System.out.println(err);
         }
 
     }
