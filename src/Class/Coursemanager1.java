@@ -81,7 +81,7 @@ public class Coursemanager1 {
             String cmd = lineSpl[0].toLowerCase();
             if (cmd.equals("section")) {
                 currSect = Integer.parseInt(lineSpl[1]) - 1;
-                System.out.println("Switched to section " + lineSpl[1]);
+                output.println("Switched to section " + lineSpl[1]);
             }
             else if (cmd.equals("insert")) {
                 currStud = allSects[currSect].insert(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
@@ -91,7 +91,7 @@ public class Coursemanager1 {
                 if (lineSpl.length == 2) {
                     //The set of students returned from search, possibly empty
                     Student[] results = allSects[currSect].search(lineSpl[1].toLowerCase());
-                    System.out.println("search results found for name: ");
+                    output.println("search results found for name: ");
                     if (results[1] == null) {
                         currStud = results[0];
                         isStud = true;
@@ -102,23 +102,23 @@ public class Coursemanager1 {
                     //Iterator through results
                     int i = 0;
                     while(i < results.length && results[i] != null) {
-                        System.out.println(results[i].toString());
+                        output.println(results[i].toString());
                         i++;
                     }
-                    System.out.println("name was found in " + Integer.toString(i) + 
+                    output.println("name was found in " + Integer.toString(i) + 
                         " records in section " + Integer.toString(currSect + 1));
                 }
                 else if (lineSpl.length == 3) {
                     //The student returned by search, possibly null
                     Student result = allSects[currSect].search(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
                     if (result == null) {
-                        System.out.println("Search failed. Student " + lineSpl[1] + 
+                        output.println("Search failed. Student " + lineSpl[1] + 
                             " "  + lineSpl[2] + " doesn't exist " + 
                             "in section " + Integer.toString(currSect + 1));
                         isStud = false;
                     }
                     else {
-                        System.out.println("Found " + result.toString());
+                        output.println("Found " + result.toString());
                         currStud = result;
                         isStud = true;
                     }
@@ -128,16 +128,16 @@ public class Coursemanager1 {
                 //The new score to be assigned
                 int newScore = Integer.parseInt(lineSpl[1]);
                 if (!isStud) {
-                    System.out.println("score command can only be called after an insert command" + 
+                    output.println("score command can only be called after an insert command" + 
                         " or a successful search command with one exact output.");
                 }
                 else if (newScore >= 0 && newScore <= 100) {
                     currStud.setGrade(newScore);
-                    System.out.println("Update " + currStud.getFirstName() + " " + currStud.getLastName() + 
+                    output.println("Update " + currStud.getFirstName() + " " + currStud.getLastName() + 
                         " record, score = " + lineSpl[1]);
                 }
                 else {
-                    System.out.println("Scores have to be integers in range 0 to 100.");
+                    output.println("Scores have to be integers in range 0 to 100.");
                 }
             }
             else if (cmd.equals("remove")) {
@@ -146,39 +146,40 @@ public class Coursemanager1 {
             else if (cmd.equals("grade")) {
                 //Holds the grade totals of the students
                 int[] result = allSects[currSect].grade();
-                System.out.println("grading completed:");
+                output.println("grading completed:");
                 //iterator through result
                 int j = 0;
                 while (j < result.length) {
                     if (result[j] > 0) {
-                        System.out.println(Integer.toString(result[j]) + " students with grade " +
+                        output.println(Integer.toString(result[j]) + " students with grade " +
                             gradeNames[j]);
                     }
                     j++;
                 }
             }
             else if (cmd.equals("dumpsection")) {
-                System.out.println("Section " + Integer.toString(currSect + 1) + " dump:");
-                System.out.println(allSects[currSect].dumpSection());
-                System.out.println("Size: " + Integer.toString(allSects[currSect].getSize()));
+                output.println("Section " + Integer.toString(currSect + 1) + " dump:");
+                output.println(allSects[currSect].dumpSection());
+                output.println("Size: " + Integer.toString(allSects[currSect].getSize()));
             }
             else if (cmd.equals("removesection")) {
                 if (lineSpl.length > 1) {
                     allSects[Integer.parseInt(lineSpl[1]) - 1].removeSection();
-                    System.out.println("Section " + lineSpl[1] + " removed");
+                    output.println("Section " + lineSpl[1] + " removed");
                 }
                 else {
                     allSects[currSect].removeSection();
-                    System.out.println("Section " + Integer.toString(currSect + 1) + " removed");
+                    output.println("Section " + Integer.toString(currSect + 1) + " removed");
                 }
             }
             else if (cmd.equals("findpair")) {
-                System.out.println("Findpair does nothing right now");
+                output.println("Findpair does nothing right now");
             }
             if (!cmd.equals("insert") && !cmd.equals("search")) {
                 isStud = false;
             }
         }
+        output.close();
         file.close();
     }
     /**
