@@ -256,10 +256,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     @Override
     public String toString() {
         if (root == null) {
-            return "()";
+            return " ";
         }
         else {
-            return "(" + root.toString() + ")";
+            return root.toString() + "\n";
         }
     }
 }

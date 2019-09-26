@@ -73,16 +73,43 @@ public class Coursemanager1 {
             else if (cmd.equals("search")) {
                 if (lineSpl.length == 2) {
                     Student[] results = allSects[currSect].search(lineSpl[1].toLowerCase());
-                    if (results.length == 1) {
+                    System.out.println("search results found for name: ");
+                    if (results[1] == null) {
                         currStud = results[0];
                     }
+                    int i = 0;
+                    while(results[i] != null) {
+                        System.out.println(results[i].toString());
+                        i++;
+                    }
+                    if (i > 0) {
+                        i--;
+                    }
+                    System.out.println("name was found in " + Integer.toString(i) + 
+                        " records in section " + Integer.toString(currSect + 1));
                 }
-                if (lineSpl.length == 3) {
-                    //TODO: search with two names
+                else if (lineSpl.length == 3) {
+                    Student result = allSects[currSect].search(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
+                    if (result == null) {
+                        System.out.println("Search failed. Student " + lineSpl[1] + 
+                            " "  + lineSpl[2] + " doesn't exist" + 
+                            "in section " + Integer.toString(currSect + 1));
+                    }
+                    else {
+                        System.out.println("Found " + result.toString());
+                    }
                 }
             }
             else if (cmd.equals("score")) {
                 
+                if (!isStud) {
+                    System.out.println("score command can only be called after an insert command" + 
+                        "or a successful search command with one exact output.");
+                }
+                else {
+                    currStud.setGrade(Integer.parseInt(lineSpl[1]));
+                    System.out.println("");
+                }
             }
         }
         file.close();
@@ -98,7 +125,7 @@ public class Coursemanager1 {
         allSects[0] = section1;
         allSects[1] = section2;
         allSects[2] = section3;
-        currSect = -1;
+        currSect = 0;
         isStud = false;
     }
 }
