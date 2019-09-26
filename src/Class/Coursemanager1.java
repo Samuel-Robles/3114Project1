@@ -148,21 +148,30 @@ public class Coursemanager1 {
                 //Holds the grade totals of the students
                 int[] result = allSects[currSect].grade();
                 System.out.println("grading completed:");
-                if (allSects[currSect].getSize() != 0) {
-                    //iterator through result
-                    int j = 0;
-                    while (j < result.length) {
+                //iterator through result
+                int j = 0;
+                while (j < result.length) {
+                    if (result[j] > 0) {
                         System.out.println(Integer.toString(result[j]) + " students with grade " +
                             gradeNames[j]);
-                        j++;
                     }
+                    j++;
                 }
             }
             else if (cmd.equals("dumpsection")) {
-                
+                System.out.println("Section " + Integer.toString(currSect + 1) + "dump:");
+                System.out.print(allSects[currSect].toString());
+                System.out.println("Size: " + Integer.toString(allSects[currSect].getSize()));
             }
             else if (cmd.equals("removesection")) {
-                
+                if (lineSpl.length > 1) {
+                    allSects[Integer.parseInt(lineSpl[1]) - 1].removeSection();
+                    System.out.println("Section " + lineSpl[1] + " removed");
+                }
+                else {
+                    allSects[currSect].removeSection();
+                    System.out.println("Section " + Integer.toString(currSect + 1) + " removed");
+                }
             }
             else if (cmd.equals("findpair")) {
                 System.out.println("Findpair does nothing right now");
@@ -188,7 +197,7 @@ public class Coursemanager1 {
     
     /**
      * Creates an array that holds string representations of grade names
-     * in order to ease implementation of the grade() function
+     * in order to ease implementation of the grade() command
      */
     private static void setGradeNames() {
         gradeNames[0] = "A+";
