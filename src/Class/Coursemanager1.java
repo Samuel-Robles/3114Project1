@@ -2,6 +2,9 @@ package Class;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 //On my honor:
@@ -48,9 +51,9 @@ public class Coursemanager1 {
      * The main method that handles reading in from the file and calling the appropriate methods
      * 
      * @param args are the target input file
-     * @throws FileNotFoundException when not given an input file
+     * @throws IOException when the FileWriter causes an exception
      */
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
         declareSections();
         //name of the command file to read from, not assigned immediately for safety
         String fileName;
@@ -63,6 +66,10 @@ public class Coursemanager1 {
         }
         //File containing commands to the program
         File cmdFile = new File(fileName);
+        //Writes to the output file
+        FileWriter outWriter = new FileWriter("Output.txt");
+        //Wraps outWriter in order to write safely
+        PrintWriter output = new PrintWriter(outWriter);
         //Scanner that parses the commands
         Scanner file = new Scanner(cmdFile);
         while(file.hasNextLine()) {
