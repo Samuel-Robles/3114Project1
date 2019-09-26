@@ -70,7 +70,7 @@ public class Section {
             currID--;
             int sectionNum = (currID - (size + 1)) / 10000;
             newStu = (Student)students.find(newStu);
-            String err1 = first + last + "is already in section " + sectionNum;
+            String err1 = first + " " + last + " is already in section " + sectionNum;
             System.out.println(err1);
             String err2 = newStu.getID() + ", " + newStu.getFirstName() + " "
                 + newStu.getLastName() + ", score = " + Integer.toString(newStu
