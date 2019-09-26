@@ -30,7 +30,15 @@ public class Section {
 
     }
 
-
+    /**
+     * Gets the current ID that will be assigned to a student
+     * @return the ID that the next student will have
+     */
+    public int getID() {
+        return currID;
+    }
+    
+    
     /**
      * Adds a student to a section. If a student is already in the BST/section,
      * then
@@ -134,17 +142,22 @@ public class Section {
         this.findNames(name, students.getRoot(), allFinds, 0);
         return allFinds;
     }
-    
+
+
     /**
      * Search for a specific student by name
-     * @param fName is the target first name
-     * @param lName is the target surname
+     * 
+     * @param fName
+     *            is the target first name
+     * @param lName
+     *            is the target surname
      * @return the student found or NULL if none
      */
     public Student search(String fName, String lName) {
         Student target = new Student(fName, lName, "000000");
         return students.find(target);
     }
+
 
     /**
      * Prints out the contents of the section
