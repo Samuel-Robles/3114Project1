@@ -98,9 +98,6 @@ public class Coursemanager1 {
                         System.out.println(results[i].toString());
                         i++;
                     }
-                    if (i > 0) {
-                        i--;
-                    }
                     System.out.println("name was found in " + Integer.toString(i) + 
                         " records in section " + Integer.toString(currSect + 1));
                 }
@@ -109,7 +106,7 @@ public class Coursemanager1 {
                     Student result = allSects[currSect].search(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
                     if (result == null) {
                         System.out.println("Search failed. Student " + lineSpl[1] + 
-                            " "  + lineSpl[2] + " doesn't exist" + 
+                            " "  + lineSpl[2] + " doesn't exist " + 
                             "in section " + Integer.toString(currSect + 1));
                         isStud = false;
                     }
@@ -137,20 +134,7 @@ public class Coursemanager1 {
                 }
             }
             else if (cmd.equals("remove")) {
-                //Checks if the remove was successful
-                boolean tryRemove = true;
-                try {
-                    allSects[currSect].remove(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
-                }
-                catch (ItemNotFoundException e) {
-                    tryRemove = false;
-                    System.out.println("Remove failed. Student " + lineSpl[1] + " " + lineSpl[2] 
-                        + " doesn't exist in section " + Integer.toString(currSect + 1));
-                }
-                if (tryRemove) {
-                    System.out.println("Student " +  lineSpl[1] + " " + lineSpl[2]  
-                        + " was removed from section " + Integer.toString(currSect + 1));
-                }
+                allSects[currSect].remove(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
             }
             else if (cmd.equals("grade")) {
                 //Holds the grade totals of the students
@@ -168,7 +152,7 @@ public class Coursemanager1 {
             }
             else if (cmd.equals("dumpsection")) {
                 System.out.println("Section " + Integer.toString(currSect + 1) + " dump:");
-                System.out.print(allSects[currSect].dumpSection());
+                System.out.println(allSects[currSect].dumpSection());
                 System.out.println("Size: " + Integer.toString(allSects[currSect].getSize()));
             }
             else if (cmd.equals("removesection")) {

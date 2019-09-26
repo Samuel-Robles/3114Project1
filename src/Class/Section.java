@@ -15,6 +15,7 @@ public class Section {
     private BinarySearchTree<Student> students;
     private int currID;
     private int size;
+    private int nameArrSize;
 
 
     /**
@@ -30,15 +31,17 @@ public class Section {
 
     }
 
+
     /**
      * Gets the current ID that will be assigned to a student
+     * 
      * @return the ID that the next student will have
      */
     public int getID() {
         return currID;
     }
-    
-    
+
+
     /**
      * Adds a student to a section. If a student is already in the BST/section,
      * then
@@ -70,7 +73,8 @@ public class Section {
             currID--;
             int sectionNum = (currID - (size + 1)) / 10000;
             newStu = (Student)students.find(newStu);
-            String err1 = first + " " + last + " is already in section " + sectionNum;
+            String err1 = first + " " + last + " is already in section "
+                + sectionNum;
             System.out.println(err1);
             String err2 = newStu.getID() + ", " + newStu.getFirstName() + " "
                 + newStu.getLastName() + ", score = " + Integer.toString(newStu
@@ -100,17 +104,19 @@ public class Section {
          */
         Student placeHolder = new Student(first, last, "0");
         size -= 1;
+        int sectionNum = (currID - (size + 1)) / 10000;
+        String err = "Student " + first + " " + last
+            + " was removed from section " + Integer.toString(sectionNum);
         try {
             students.remove(placeHolder);
         }
         catch (ItemNotFoundException e) {
             size += 1;
-            int sectionNum = (currID - (size + 1)) / 10000;
-            String err = "Remove failed. " + first + last
+            err = "Remove failed. " + first + last
                 + " student doesn't exist in section " + Integer.toString(
                     sectionNum);
-            System.out.println(err);
         }
+        System.out.println(err);
 
     }
 
@@ -139,7 +145,8 @@ public class Section {
      */
     public Student[] search(String name) {
         Student[] allFinds = new Student[500];
-        this.findNames(name, students.getRoot(), allFinds, 0);
+        this.findNames(name, students.getRoot(), allFinds);
+        nameArrSize = 0;
         return allFinds;
     }
 
@@ -276,11 +283,10 @@ public class Section {
     private void findNames(
         String name,
         BinaryNode<Student> node,
-        Student[] sameNames,
-        int currSize) {
+        Student[] sameNames) {
         // If the left node/subtree exists, we check that out
         if (node.getLeft() != null) {
-            this.findNames(name, node.getLeft(), sameNames, currSize);
+            this.findNames(name, node.getLeft(), sameNames);
         }
         // Checks if the current node even exists, then checks if either of its
         // student's names match the given name. if they do, add them to the
@@ -288,12 +294,12 @@ public class Section {
         if (node != null && (node.getValue().getFirstName().equalsIgnoreCase(
             name) == true || node.getValue().getLastName().equalsIgnoreCase(
                 name) == true)) {
-            sameNames[currSize] = node.getValue();
-            currSize++;
+            sameNames[nameArrSize] = node.getValue();
+            nameArrSize++;
         }
         // Checks the right node/subtree and travels down it if it exists
         if (node.getRight() != null) {
-            this.findNames(name, node.getRight(), sameNames, currSize);
+            this.findNames(name, node.getRight(), sameNames);
         }
         /*
          * if (node == null) {
