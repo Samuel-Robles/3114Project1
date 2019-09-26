@@ -204,8 +204,8 @@ public class Coursemanager1 {
      */
     private static void setGradeNames() {
         gradeNames = new String[12];
-        gradeNames[0] = "A+";
-        gradeNames[1] = "A";
+        gradeNames[0] = "A";
+        gradeNames[1] = "A-";
         gradeNames[2] = "B+";
         gradeNames[3] = "B";
         gradeNames[4] = "B-";
@@ -215,7 +215,7 @@ public class Coursemanager1 {
         gradeNames[8] = "D+";
         gradeNames[9] = "D";
         gradeNames[10] = "D-";
-        gradeNames[11] = "E";
+        gradeNames[11] = "F";
     }
     
 }

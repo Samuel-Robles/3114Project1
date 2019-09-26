@@ -149,7 +149,9 @@ public class Section {
      */
     public Student[] search(String name) {
         Student[] allFinds = new Student[500];
-        this.findNames(name, students.getRoot(), allFinds);
+        if (size != 0) {
+            this.findNames(name, students.getRoot(), allFinds);
+        }
         nameArrSize = 0;
         return allFinds;
     }
@@ -188,7 +190,9 @@ public class Section {
      */
     public int[] grade() {
         int[] grades = new int[12];
-        this.tallyScore(students.getRoot(), grades);
+        if (size != 0) {
+            this.tallyScore(students.getRoot(), grades);
+        }
         return grades;
 
     }
