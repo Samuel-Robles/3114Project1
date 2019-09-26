@@ -112,7 +112,7 @@ public class Section {
         }
         catch (ItemNotFoundException e) {
             size += 1;
-            err = "Remove failed. " + first + last
+            err = "Remove failed. " + first + " " + last
                 + " student doesn't exist in section " + Integer.toString(
                     sectionNum);
         }
