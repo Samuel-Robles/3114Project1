@@ -159,8 +159,8 @@ public class Coursemanager1 {
                 }
             }
             else if (cmd.equals("dumpsection")) {
-                System.out.println("Section " + Integer.toString(currSect + 1) + "dump:");
-                System.out.print(allSects[currSect].toString());
+                System.out.println("Section " + Integer.toString(currSect + 1) + " dump:");
+                System.out.print(allSects[currSect].dumpSection());
                 System.out.println("Size: " + Integer.toString(allSects[currSect].getSize()));
             }
             else if (cmd.equals("removesection")) {
@@ -200,6 +200,7 @@ public class Coursemanager1 {
      * in order to ease implementation of the grade() command
      */
     private static void setGradeNames() {
+        gradeNames = new String[12];
         gradeNames[0] = "A+";
         gradeNames[1] = "A";
         gradeNames[2] = "B+";
