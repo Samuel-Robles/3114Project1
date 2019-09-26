@@ -3,6 +3,8 @@
  */
 package Class;
 
+import java.io.PrintWriter;
+
 /**
  * This class represents a section of a course. It contains a binary search tree
  * that stores students, and contains methods that allows
@@ -46,12 +48,13 @@ public class Section {
      * Adds a student to a section. If a student is already in the BST/section,
      * then
      * it calls an exception. On successful insertion it generates a new id.
+     * @param output 
      * 
      * @return the student record that was just created (or the students
      *         existing
      *         record if the student was already in the section)
      */
-    public Student insert(String first, String last) {
+    public Student insert(String first, String last, PrintWriter output) {
         /*
          * So this bad boy is a mess basically
          * First we make a placeholder student, iterate our size and id
@@ -75,14 +78,14 @@ public class Section {
             newStu = (Student)students.find(newStu);
             String err1 = first + " " + last + " is already in section "
                 + sectionNum;
-            System.out.println(err1);
+            output.println(err1);
             String err2 = newStu.getID() + ", " + newStu.getFirstName() + " "
                 + newStu.getLastName() + ", score = " + Integer.toString(newStu
                     .getGrade());
-            System.out.println(err2);
+            output.println(err2);
             return newStu;
         }
-        System.out.println(first + " " + last + " inserted");
+        output.println(first + " " + last + " inserted");
         return newStu;
     }
 
@@ -94,8 +97,9 @@ public class Section {
      *            The students first name
      * @param last
      *            The students last name
+     * @param output 
      */
-    public void remove(String first, String last) {
+    public void remove(String first, String last, PrintWriter output) {
         /*
          * Create new student placeholder and decrement size
          * Try to remove student
@@ -116,7 +120,7 @@ public class Section {
                 + " student doesn't exist in section " + Integer.toString(
                     sectionNum);
         }
-        System.out.println(err);
+        output.println(err);
 
     }
 

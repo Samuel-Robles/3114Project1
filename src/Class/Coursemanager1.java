@@ -84,7 +84,7 @@ public class Coursemanager1 {
                 output.println("Switched to section " + lineSpl[1]);
             }
             else if (cmd.equals("insert")) {
-                currStud = allSects[currSect].insert(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
+                currStud = allSects[currSect].insert(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase(), output);
                 isStud = true;
             }
             else if (cmd.equals("search")) {
@@ -141,7 +141,7 @@ public class Coursemanager1 {
                 }
             }
             else if (cmd.equals("remove")) {
-                allSects[currSect].remove(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
+                allSects[currSect].remove(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase(), output);
             }
             else if (cmd.equals("grade")) {
                 //Holds the grade totals of the students
