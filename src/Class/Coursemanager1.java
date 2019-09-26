@@ -41,6 +41,8 @@ public class Coursemanager1 {
     private static Student currStud;
     //Checks if there is a current student
     private static boolean isStud;
+    //Holds string representations of grade values
+    private static String[] gradeNames; 
     
     /**
      * The main method that handles reading in from the file and calling the appropriate methods
@@ -50,18 +52,25 @@ public class Coursemanager1 {
      */
     public static void main(String[] args) throws FileNotFoundException {
         declareSections();
+        //name of the command file to read from, not assigned immediately for safety
         String fileName;
+        //Checks if there is a command file
         if (args.length == 1) {
             fileName = args[0];
         }
         else {
             throw new FileNotFoundException("Please add a command file.");
         }
+        //File containing commands to the program
         File cmdFile = new File(fileName);
+        //Scanner that parses the commands
         Scanner file = new Scanner(cmdFile);
         while(file.hasNextLine()) {
+            //Next command line of the file
             String line = file.nextLine();
+            //Removes the whitespace and makes an array of substrings
             String[] lineSpl = line.split(" \t");
+            //The first string, the command to execute
             String cmd = lineSpl[0].toLowerCase();
             if (cmd.equals("section")) {
                 currSect = Integer.parseInt(lineSpl[1]) - 1;
@@ -72,13 +81,15 @@ public class Coursemanager1 {
             }
             else if (cmd.equals("search")) {
                 if (lineSpl.length == 2) {
+                    //The set of students returned from search, possibly empty
                     Student[] results = allSects[currSect].search(lineSpl[1].toLowerCase());
                     System.out.println("search results found for name: ");
                     if (results[1] == null) {
                         currStud = results[0];
                     }
+                    //Iterator through results
                     int i = 0;
-                    while(results[i] != null) {
+                    while(i < results.length && results[i] != null) {
                         System.out.println(results[i].toString());
                         i++;
                     }
@@ -89,6 +100,7 @@ public class Coursemanager1 {
                         " records in section " + Integer.toString(currSect + 1));
                 }
                 else if (lineSpl.length == 3) {
+                    //The student returned by search, possibly null
                     Student result = allSects[currSect].search(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
                     if (result == null) {
                         System.out.println("Search failed. Student " + lineSpl[1] + 
@@ -101,15 +113,59 @@ public class Coursemanager1 {
                 }
             }
             else if (cmd.equals("score")) {
-                
+                //The new score to be assigned
+                int newScore = Integer.parseInt(lineSpl[1]);
                 if (!isStud) {
                     System.out.println("score command can only be called after an insert command" + 
                         "or a successful search command with one exact output.");
                 }
-                else {
-                    currStud.setGrade(Integer.parseInt(lineSpl[1]));
-                    System.out.println("");
+                else if (newScore >= 0 && newScore <= 100) {
+                    currStud.setGrade(newScore);
+                    System.out.println("Update " + currStud.getFirstName() + " " + currStud.getLastName() + 
+                        " record, score = " + lineSpl[1]);
                 }
+                else {
+                    System.out.println("Scores have to be integers in range 0 to 100.");
+                }
+            }
+            else if (cmd.equals("remove")) {
+                //Checks if the remove was successful
+                boolean tryRemove = true;
+                try {
+                    allSects[currSect].remove(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
+                }
+                catch (ItemNotFoundException e) {
+                    tryRemove = false;
+                    System.out.println("Remove failed. Student " + lineSpl[1] + " " + lineSpl[2] 
+                        + " doesn't exist in section " + Integer.toString(currSect + 1));
+                }
+                if (tryRemove) {
+                    System.out.println("Student " +  lineSpl[1] + " " + lineSpl[2]  
+                        + " was removed from section " + Integer.toString(currSect + 1));
+                }
+            }
+            else if (cmd.equals("grade")) {
+                //Holds the grade totals of the students
+                int[] result = allSects[currSect].grade();
+                System.out.println("grading completed:");
+                if (allSects[currSect].getSize() != 0) {
+                    //iterator through result
+                    int j = 0;
+                    while (j < result.length) {
+                        System.out.println(Integer.toString(result[j]) + " students with grade " +
+                            gradeNames[j]);
+                        j++;
+                    }
+                }
+            }
+            else if (cmd.equals("dumpsection")) {
+                
+            }
+            else if (cmd.equals("removesection")) {
+                
+            }
+            else if (cmd.equals("findpair")) {
+                System.out.println("Findpair does nothing right now");
             }
         }
         file.close();
@@ -127,5 +183,26 @@ public class Coursemanager1 {
         allSects[2] = section3;
         currSect = 0;
         isStud = false;
+        setGradeNames();
     }
+    
+    /**
+     * Creates an array that holds string representations of grade names
+     * in order to ease implementation of the grade() function
+     */
+    private static void setGradeNames() {
+        gradeNames[0] = "A+";
+        gradeNames[1] = "A";
+        gradeNames[2] = "B+";
+        gradeNames[3] = "B";
+        gradeNames[4] = "B-";
+        gradeNames[5] = "C+";
+        gradeNames[6] = "C";
+        gradeNames[7] = "C-";
+        gradeNames[8] = "D+";
+        gradeNames[9] = "D";
+        gradeNames[10] = "D-";
+        gradeNames[11] = "E";
+    }
+    
 }
