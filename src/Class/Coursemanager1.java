@@ -69,7 +69,7 @@ public class Coursemanager1 {
             //Next command line of the file
             String line = file.nextLine();
             //Removes the whitespace and makes an array of substrings
-            String[] lineSpl = line.split(" \t");
+            String[] lineSpl = line.trim().split("\\s+");
             //The first string, the command to execute
             String cmd = lineSpl[0].toLowerCase();
             if (cmd.equals("section")) {
@@ -78,6 +78,7 @@ public class Coursemanager1 {
             }
             else if (cmd.equals("insert")) {
                 currStud = allSects[currSect].insert(lineSpl[1].toLowerCase(), lineSpl[2].toLowerCase());
+                isStud = true;
             }
             else if (cmd.equals("search")) {
                 if (lineSpl.length == 2) {
@@ -86,6 +87,10 @@ public class Coursemanager1 {
                     System.out.println("search results found for name: ");
                     if (results[1] == null) {
                         currStud = results[0];
+                        isStud = true;
+                    }
+                    else {
+                        isStud = false;
                     }
                     //Iterator through results
                     int i = 0;
@@ -106,9 +111,12 @@ public class Coursemanager1 {
                         System.out.println("Search failed. Student " + lineSpl[1] + 
                             " "  + lineSpl[2] + " doesn't exist" + 
                             "in section " + Integer.toString(currSect + 1));
+                        isStud = false;
                     }
                     else {
                         System.out.println("Found " + result.toString());
+                        currStud = result;
+                        isStud = true;
                     }
                 }
             }
@@ -117,7 +125,7 @@ public class Coursemanager1 {
                 int newScore = Integer.parseInt(lineSpl[1]);
                 if (!isStud) {
                     System.out.println("score command can only be called after an insert command" + 
-                        "or a successful search command with one exact output.");
+                        " or a successful search command with one exact output.");
                 }
                 else if (newScore >= 0 && newScore <= 100) {
                     currStud.setGrade(newScore);
@@ -175,6 +183,9 @@ public class Coursemanager1 {
             }
             else if (cmd.equals("findpair")) {
                 System.out.println("Findpair does nothing right now");
+            }
+            if (!cmd.equals("insert") && !cmd.equals("search")) {
+                isStud = false;
             }
         }
         file.close();
