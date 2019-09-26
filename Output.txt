@@ -1,9 +1,15 @@
 Section 1 dump:
  
 Size: 0
+john obi inserted
 Update john obi record, score = 88
+susan obi inserted
 Update susan obi record, score = 15
+susan obi is already in section 1
+010002, susan obi, score = 15
 Update susan obi record, score = 27
+susan ibrahim inserted
+nancy henry inserted
 Update nancy henry record, score = 71
 Section 1 dump:
 010004, nancy henry, score = 71, 
@@ -30,10 +36,17 @@ search results found for name:
 010001, john obi, score = 88
 name was found in 1 records in section 1
 Update john obi record, score = 98
+Remove failed. virtual student student doesn't exist in section 1
+virtual student inserted
 Update virtual student record, score = 77
+Remove failed. john obi student doesn't exist in section 1
+Student virtual student was removed from section 1
 Switched to section 2
+david moses inserted
 Update david moses record, score = 85
+sarah moses inserted
 Update sarah moses record, score = 93
+susan obi inserted
 Found 020001, david moses, score = 85
 Update david moses record, score = 66
 Found 020001, david moses, score = 66
