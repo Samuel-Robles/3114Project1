@@ -206,8 +206,8 @@ public class SectionTest extends TestCase {
         // for isn't there
         tester.insert("Kujo", "Jolyne", outFile);
         tester.insert("Jolyne", "Kujo", outFile);
-        tester.insert("Jotaro", "Higashigata", outFile);
-        tester.insert("Josuke", "Higashigata", outFile);
+        tester.insert("Jotaro", "Higashikata", outFile);
+        tester.insert("Josuke", "Higashikata", outFile);
         assertNull(tester.search("Kujo", "Jotaro"));
 
         // tests for when there are multiple elements and the student we are
@@ -247,7 +247,7 @@ public class SectionTest extends TestCase {
         tester.insert("Jonathan", "Joestar", outFile).setGrade(79);
         tester.insert("Perfect", "Kars", outFile).setGrade(74);
         tester.insert("Joseph", "Joestar", outFile).setGrade(69);
-        tester.insert("Josuke", "Higashigata", outFile).setGrade(64);
+        tester.insert("Josuke", "Higashikata", outFile).setGrade(64);
         tester.insert("Giorno", "Giovanna", outFile).setGrade(59);
         tester.insert("Diavolo", " ", outFile).setGrade(56);
         tester.insert("Yoshikage", "Kira", outFile).setGrade(53);
@@ -281,6 +281,38 @@ public class SectionTest extends TestCase {
         assertEquals(tester.grade()[10], 1);
         assertEquals(tester.grade()[11], 1);
 
+    }
+
+
+    /**
+     * Tests the dumpSection method to ensure that it creates proper strings
+     * representing
+     * a section
+     */
+    public void testDumpSection() {
+
+        // tries to dumpSection on an empty section
+        String test = tester.dumpSection();
+        String base = " ";
+        assertTrue(test.equalsIgnoreCase(base));
+
+        // Inserts students into the section then tests dumpSection
+        tester.insert("Josuke", "Higashikata", outFile).setGrade(100);
+        tester.insert("Giorno", "Giovanna", outFile).setGrade(90);
+        tester.insert("Jolyne", "Kujo", outFile).setGrade(80);
+        tester.insert("Jotaro", "Kujo", outFile).setGrade(70);
+        tester.insert("Crazy", "Diamond", outFile).setGrade(60);
+        tester.insert("Vinegar", "Doppio", outFile).setGrade(50);
+        tester.insert("Dio", "Brando", outFile).setGrade(40);
+        test = tester.dumpSection();
+        base = "010007, Dio Brando, score = 40, " + '\n'
+            + "010005, Crazy Diamond, score = 60, " + '\n'
+            + "010006, Vinegar Doppio, score = 50, " + '\n'
+            + "010002, Giorno Giovanna, score = 90, " + '\n'
+            + "010001, Josuke Higashikata, score = 100, " + '\n'
+            + "010003, Jolyne Kujo, score = 80, " + '\n'
+            + "010004, Jotaro Kujo, score = 70";
+        assertTrue(test.equals(base));
     }
 
 }
