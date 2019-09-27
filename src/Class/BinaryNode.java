@@ -86,9 +86,9 @@ public class BinaryNode<T> {
 
 
     /**
-     * Provides an in-order representation of the node
+     * Provides an in-order representation of the tree
      * 
-     * @return a string representation of the node
+     * @return a string representation of the tree in list form
      */
     @Override
     public String toString() {

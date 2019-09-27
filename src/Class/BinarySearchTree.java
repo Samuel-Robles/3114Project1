@@ -3,6 +3,7 @@ package Class;
 public class BinarySearchTree<T extends Comparable<? super T>> {
     private BinaryNode<T> root;
 
+
     // ----------------------------------------------------------
     /**
      * Constructs an empty tree.
@@ -11,9 +12,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         root = null;
     }
 
+
     // ----------------------------------------------------------
     /**
-     * Insert into the tree.
+     * Insert into the tree. Uses a recursive private method
      *
      * @param x
      *            the item to insert.
@@ -25,8 +27,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
 
     // ----------------------------------------------------------
     /**
-     * Remove the specified value from the tree.
-     *
+     * Remove the specified value from the tree. Uses a recursive private method
+     * 
      * @param x
      *            the item to remove.
      */
@@ -45,6 +47,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return elementAt(findMin(root));
     }
 
+
     /**
      * Find the largest item in the tree.
      *
@@ -54,15 +57,18 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return elementAt(findMax(root));
     }
 
+
     /**
      * Find an item in the tree.
      *
-     * @param x the item to search for.
+     * @param x
+     *            the item to search for.
      * @return the matching item or null if not found.
      */
     public T find(T x) {
         return elementAt(find(x, root));
     }
+
 
     /**
      * Indirectly clear all elements in the tree
@@ -71,6 +77,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     public void makeEmpty() {
         root = null;
     }
+
 
     /**
      * Test if the tree is cleared
@@ -81,13 +88,16 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         return root == null;
     }
 
+
     /**
      * Returns the root of the tree
+     * 
      * @return the root
      */
-    public BinaryNode<T> getRoot(){
+    public BinaryNode<T> getRoot() {
         return root;
     }
+
 
     // ----------------------------------------------------------
     /**
@@ -190,6 +200,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         if (node == null) {
             return node;
         }
+        // If the node has no left children it is the smallest in the tree
         else if (node.getLeft() == null) {
             return node;
         }
@@ -211,6 +222,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         if (node == null) {
             return node;
         }
+        // If a node has no right children it is the largest value
         else if (node.getRight() == null) {
             return node;
         }

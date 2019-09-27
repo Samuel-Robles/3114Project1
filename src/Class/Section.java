@@ -48,7 +48,9 @@ public class Section {
      * Adds a student to a section. If a student is already in the BST/section,
      * then
      * it calls an exception. On successful insertion it generates a new id.
-     * @param output 
+     * 
+     * @param output
+     *            is the output file for the program to print result to
      * 
      * @return the student record that was just created (or the students
      *         existing
@@ -97,7 +99,8 @@ public class Section {
      *            The students first name
      * @param last
      *            The students last name
-     * @param output 
+     * @param output
+     *            is the output file to print results to
      */
     public void remove(String first, String last, PrintWriter output) {
         /*
@@ -108,6 +111,7 @@ public class Section {
          */
         Student placeHolder = new Student(first, last, "0");
         size -= 1;
+        // Number of the current section
         int sectionNum = (currID - (size + 1)) / 10000;
         String err = "Student " + first + " " + last
             + " was removed from section " + Integer.toString(sectionNum);
@@ -282,7 +286,7 @@ public class Section {
      * @param name
      *            the name we are looking for (can be first or last name)
      * @param node
-     *            the node we are looking at rn
+     *            the node we are looking at right now
      * @param sameNames
      *            the array of students who have the name (whether first or last
      * @param currSize
@@ -309,21 +313,5 @@ public class Section {
         if (node.getRight() != null) {
             this.findNames(name, node.getRight(), sameNames);
         }
-        /*
-         * if (node == null) {
-         * return null; // Not found
-         * }
-         * else if (x.compareTo(node.getValue()) < 0) {
-         * // Search in the left subtree
-         * return find(x, node.getLeft());
-         * }
-         * else if (x.compareTo(node.getValue()) > 0) {
-         * // Search in the right subtree
-         * return find(x, node.getRight());
-         * }
-         * else {
-         * return node; // Match
-         * }
-         */
     }
 }

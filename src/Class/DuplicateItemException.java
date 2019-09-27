@@ -1,11 +1,10 @@
 package Class;
-//-------------------------------------------------------------------------
+
+// -------------------------------------------------------------------------
 /**
  * An exception for an add called on an item already in a tree
  */
-public class DuplicateItemException
-    extends RuntimeException
-{
+public class DuplicateItemException extends RuntimeException {
     /**
      * The version ID of the error
      */
@@ -15,19 +14,19 @@ public class DuplicateItemException
     /**
      * The basic exception with no message
      */
-    public DuplicateItemException()
-    {
+    public DuplicateItemException() {
         super();
     }
 
 
     /**
      * An exception with a custom message to inform the user
-     * @param message the error message (Likely what item was duplicated,
-     *      possibly its position or data)
+     * 
+     * @param message
+     *            the error message (Likely what item was duplicated,
+     *            possibly its position or data)
      */
-    public DuplicateItemException(String message)
-    {
+    public DuplicateItemException(String message) {
         super(message);
     }
 }
