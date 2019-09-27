@@ -1,5 +1,3 @@
-package Class;
-
 public class BinarySearchTree<T extends Comparable<? super T>> {
     private BinaryNode<T> root;
 
@@ -172,8 +170,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         else {
             // If there are two children
             if (node.getLeft() != null && node.getRight() != null) {
-                node = findMin(node.getRight());
-                result = remove(node.getValue(), findMin(node.getRight()));
+                //A temporary node to hold the values that need to get moved
+                BinaryNode<T> temp = findMin(node.getRight());
+                node.setValue(temp.getValue());
+                node.setRight(remove(temp.getValue(), node.getRight()));
             }
             // If there is only one child on the left
             else if (node.getLeft() != null) {
@@ -268,10 +268,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
     @Override
     public String toString() {
         if (root == null) {
-            return " ";
+            return "";
         }
         else {
-            return root.toString();
+            return (root.toString() + ", \n");
         }
     }
 }

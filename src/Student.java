@@ -1,4 +1,4 @@
-package Class;
+
 
 public class Student implements ClassMember {
 

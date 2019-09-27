@@ -1,4 +1,4 @@
-package Class;
+
 
 import student.TestCase;
 

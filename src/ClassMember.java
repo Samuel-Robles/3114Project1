@@ -1,4 +1,4 @@
-package Class;
+
 
 public interface ClassMember extends Comparable<ClassMember> {
     public int compareTo(ClassMember compMember);

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package Class;
+
 
 import java.io.PrintWriter;
 
@@ -114,14 +114,14 @@ public class Section {
         // Number of the current section
         int sectionNum = (currID - (size + 1)) / 10000;
         String err = "Student " + first + " " + last
-            + " was removed from section " + Integer.toString(sectionNum);
+            + " get removed from section " + Integer.toString(sectionNum);
         try {
             students.remove(placeHolder);
         }
         catch (ItemNotFoundException e) {
             size += 1;
-            err = "Remove failed. " + first + " " + last
-                + " student doesn't exist in section " + Integer.toString(
+            err = "Remove failed. Student " + first + " " + last
+                + " doesn't exist in section " + Integer.toString(
                     sectionNum);
         }
         output.println(err);
@@ -138,7 +138,7 @@ public class Section {
         // This method just uses the BST makeEmpty method, and resets the size
         // and currID
         students.makeEmpty();
-        currID = currID - size;
+        currID = ((currID / 10000) * 10000) + 1;
         size = 0;
 
     }

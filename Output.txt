@@ -1,0 +1,65 @@
+Section 1 dump:
+Size = 0
+john obi inserted
+Update john obi record, score = 88
+susan obi inserted
+Update susan obi record, score = 15
+susan obi is already in section 1
+010002, susan obi, score = 15
+Update susan obi record, score = 27
+susan ibrahim inserted
+nancy henry inserted
+Update nancy henry record, score = 71
+Section 1 dump:
+010004, nancy henry, score = 71, 
+010003, susan ibrahim, score = 0, 
+010001, john obi, score = 88, 
+010002, susan obi, score = 27, 
+Size = 4
+score command can only be called after an insert command or a successful search command with one exact output.
+Switch to section 2
+Search failed. Student X Y doesn't exist in section 2
+Switch to section 1
+Found 010002, susan obi, score = 27
+Search failed. Student A B doesn't exist in section 1
+search results for Eva:
+Eva was found in 0 records in section 1
+search results for Susa:
+Susa was found in 0 records in section 1
+search results for Susan:
+010003, susan ibrahim, score = 0
+010002, susan obi, score = 27
+Susan was found in 2 records in section 1
+score command can only be called after an insert command or a successful search command with one exact output.
+search results for john:
+010001, john obi, score = 88
+john was found in 1 records in section 1
+Update john obi record, score = 98
+Remove failed. Student virtual student doesn't exist in section 1
+virtual student inserted
+Update virtual student record, score = 77
+Student john obi get removed from section 1
+Student virtual student get removed from section 1
+Switch to section 2
+david moses inserted
+Update david moses record, score = 85
+sarah moses inserted
+Update sarah moses record, score = 93
+susan obi inserted
+Found 020001, david moses, score = 85
+Update david moses record, score = 66
+Found 020001, david moses, score = 66
+Scores have to be integers in range 0 to 100.
+Section 2 dump:
+020001, david moses, score = 66, 
+020002, sarah moses, score = 93, 
+020003, susan obi, score = 0, 
+Size = 3
+Section 3 removed
+Section 2 removed
+Switch to section 1
+Findpair does nothing right now
+Findpair does nothing right now
+grading completed:
+2 students with grade f
+1 students with grade b-

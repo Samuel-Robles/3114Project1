@@ -1,4 +1,4 @@
-package Class;
+
 
 public class BinaryNode<T> {
     private T value;

@@ -1,4 +1,4 @@
-package Class;
+
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -293,7 +293,7 @@ public class SectionTest extends TestCase {
 
         // tries to dumpSection on an empty section
         String test = tester.dumpSection();
-        String base = " ";
+        String base = "";
         assertTrue(test.equalsIgnoreCase(base));
 
         // Inserts students into the section then tests dumpSection
@@ -311,7 +311,7 @@ public class SectionTest extends TestCase {
             + "010002, Giorno Giovanna, score = 90, " + '\n'
             + "010001, Josuke Higashikata, score = 100, " + '\n'
             + "010003, Jolyne Kujo, score = 80, " + '\n'
-            + "010004, Jotaro Kujo, score = 70";
+            + "010004, Jotaro Kujo, score = 70, " + '\n';
         assertTrue(test.equals(base));
     }
 

@@ -1,4 +1,4 @@
-package Class;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -93,7 +93,7 @@ public class Coursemanager1 {
             String cmd = lineSpl[0].toLowerCase();
             if (cmd.equals("section")) {
                 currSect = Integer.parseInt(lineSpl[1]) - 1;
-                output.println("Switched to section " + lineSpl[1]);
+                output.println("Switch to section " + lineSpl[1]);
             }
             else if (cmd.equals("insert")) {
                 currStud = allSects[currSect].insert(lineSpl[1].toLowerCase(),
@@ -105,7 +105,7 @@ public class Coursemanager1 {
                     // The set of students returned from search, possibly empty
                     Student[] results = allSects[currSect].search(lineSpl[1]
                         .toLowerCase());
-                    output.println("search results found for name: ");
+                    output.println("search results for " + lineSpl[1] + ":");
                     if (results[1] == null) {
                         currStud = results[0];
                         isStud = true;
@@ -119,7 +119,7 @@ public class Coursemanager1 {
                         output.println(results[i].toString());
                         i++;
                     }
-                    output.println("name was found in " + Integer.toString(i)
+                    output.println(lineSpl[1] + " was found in " + Integer.toString(i)
                         + " records in section " + Integer.toString(currSect
                             + 1));
                 }
@@ -170,9 +170,9 @@ public class Coursemanager1 {
                 // iterator through result
                 int j = 0;
                 while (j < result.length) {
-                    if (result[j] > 0) {
-                        output.println(Integer.toString(result[j])
-                            + " students with grade " + gradeNames[j]);
+                    if (result[gradeNames.length - j - 1] > 0) {
+                        output.println(Integer.toString(result[gradeNames.length - j - 1])
+                            + " students with grade " + gradeNames[gradeNames.length - j - 1]);
                     }
                     j++;
                 }
@@ -180,8 +180,8 @@ public class Coursemanager1 {
             else if (cmd.equals("dumpsection")) {
                 output.println("Section " + Integer.toString(currSect + 1)
                     + " dump:");
-                output.println(allSects[currSect].dumpSection());
-                output.println("Size: " + Integer.toString(allSects[currSect]
+                output.print(allSects[currSect].dumpSection());
+                output.println("Size = " + Integer.toString(allSects[currSect]
                     .getSize()));
             }
             else if (cmd.equals("removesection")) {
@@ -230,18 +230,18 @@ public class Coursemanager1 {
      */
     private static void setGradeNames() {
         gradeNames = new String[12];
-        gradeNames[0] = "A";
-        gradeNames[1] = "A-";
-        gradeNames[2] = "B+";
-        gradeNames[3] = "B";
-        gradeNames[4] = "B-";
-        gradeNames[5] = "C+";
-        gradeNames[6] = "C";
-        gradeNames[7] = "C-";
-        gradeNames[8] = "D+";
-        gradeNames[9] = "D";
-        gradeNames[10] = "D-";
-        gradeNames[11] = "F";
+        gradeNames[0] = "a";
+        gradeNames[1] = "a-";
+        gradeNames[2] = "b+";
+        gradeNames[3] = "b";
+        gradeNames[4] = "b-";
+        gradeNames[5] = "c+";
+        gradeNames[6] = "c";
+        gradeNames[7] = "c-";
+        gradeNames[8] = "d+";
+        gradeNames[9] = "c";
+        gradeNames[10] = "c-";
+        gradeNames[11] = "f";
     }
 
 }
