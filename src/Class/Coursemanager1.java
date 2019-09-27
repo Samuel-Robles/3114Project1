@@ -27,6 +27,13 @@ import java.util.Scanner;
 // during the discussion. I have violated neither the spirit nor
 // letter of this restriction.
 
+/**
+ * Contains the main method that handles input and output
+ * 
+ * @version 2019.09.26
+ * @author John Hoskinson(johnh98@vt.edu) Sam Robles(robleshs@vt.edu)
+ *
+ */
 public class Coursemanager1 {
 
     /**
@@ -50,6 +57,7 @@ public class Coursemanager1 {
     /**
      * The main method that handles reading in from the file and calling the
      * appropriate methods
+     * 
      * 
      * @param args
      *            are the target input file
