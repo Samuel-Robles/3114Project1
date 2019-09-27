@@ -105,11 +105,11 @@ public class BinaryNode<T> {
     public String toString() {
         StringBuilder builder = new StringBuilder();
         if (left != null) {
-            builder.append(left.toString() + ", \n");
+            builder.append(left.toString() + " \n");
         }
         builder.append(value.toString());
         if (right != null) {
-            builder.append(", \n" + right.toString());
+            builder.append(" \n" + right.toString());
         }
         return builder.toString();
     }
