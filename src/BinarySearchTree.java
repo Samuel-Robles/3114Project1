@@ -1,3 +1,14 @@
+/**
+ * This class represents a generic BST. It holds data and can be traversed.
+ * This class also contains methods that allow for the BST to be modified
+ * 
+ * @author Sam Robles <robleshs>
+ * @author John Hoskinson <johnh98>
+ * @version 9/21/2019
+ *
+ * @param <T>
+ *            generic type held within the nodes of the BST
+ */
 public class BinarySearchTree<T extends Comparable<? super T>> {
     private BinaryNode<T> root;
 
@@ -170,7 +181,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
         else {
             // If there are two children
             if (node.getLeft() != null && node.getRight() != null) {
-                //A temporary node to hold the values that need to get moved
+                // A temporary node to hold the values that need to get moved
                 BinaryNode<T> temp = findMin(node.getRight());
                 node.setValue(temp.getValue());
                 node.setRight(remove(temp.getValue(), node.getRight()));

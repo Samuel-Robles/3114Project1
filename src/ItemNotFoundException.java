@@ -1,8 +1,10 @@
 
-
 // -------------------------------------------------------------------------
 /**
  * Exception for a search or remove called on a target that does not exist
+ * 
+ * @author John Hoskinson <johnh98>
+ * @version 9/22/2019
  */
 public class ItemNotFoundException extends RuntimeException {
 

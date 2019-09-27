@@ -4,6 +4,11 @@ import student.TestCase;
 
 /**
  * Tests the methods of BinarySearchTree
+ * @author Sam Robles <robleshs>
+ * @author John Hoskinson <johnh98>
+ * @version 9/22/2019
+ * 
+ * 
  */
 public class BinarySearchTreeTest extends TestCase {
 

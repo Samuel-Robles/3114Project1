@@ -2,7 +2,6 @@
  * 
  */
 
-
 import java.io.PrintWriter;
 
 /**
@@ -10,7 +9,9 @@ import java.io.PrintWriter;
  * that stores students, and contains methods that allows
  * for the modifying of this BST.
  * 
- * @author robleshs
+ * @author Sam Robles <robleshs>
+ * @author John Hoskinson <johnh98>
+ * @version 9/24/2019
  *
  */
 public class Section {
@@ -48,6 +49,12 @@ public class Section {
      * Adds a student to a section. If a student is already in the BST/section,
      * then
      * it calls an exception. On successful insertion it generates a new id.
+     * 
+     * @param first
+     *            the students first name
+     * 
+     * @param last
+     *            the students last name
      * 
      * @param output
      *            is the output file for the program to print result to
@@ -121,8 +128,7 @@ public class Section {
         catch (ItemNotFoundException e) {
             size += 1;
             err = "Remove failed. Student " + first + " " + last
-                + " doesn't exist in section " + Integer.toString(
-                    sectionNum);
+                + " doesn't exist in section " + Integer.toString(sectionNum);
         }
         output.println(err);
 
@@ -289,8 +295,6 @@ public class Section {
      *            the node we are looking at right now
      * @param sameNames
      *            the array of students who have the name (whether first or last
-     * @param currSize
-     *            the current number of students in the sameNames array
      */
     private void findNames(
         String name,
@@ -304,8 +308,7 @@ public class Section {
         // student's names match the given name. if they do, add them to the
         // array
         if (node != null && (node.getValue().getFirstName().equalsIgnoreCase(
-            name) == true || node.getValue().getLastName().equalsIgnoreCase(
-                name) == true)) {
+            name) || node.getValue().getLastName().equalsIgnoreCase(name))) {
             sameNames[nameArrSize] = node.getValue();
             nameArrSize++;
         }

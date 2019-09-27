@@ -1,5 +1,4 @@
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -119,9 +118,9 @@ public class Coursemanager1 {
                         output.println(results[i].toString());
                         i++;
                     }
-                    output.println(lineSpl[1] + " was found in " + Integer.toString(i)
-                        + " records in section " + Integer.toString(currSect
-                            + 1));
+                    output.println(lineSpl[1] + " was found in " + Integer
+                        .toString(i) + " records in section " + Integer
+                            .toString(currSect + 1));
                 }
                 else if (lineSpl.length == 3) {
                     // The student returned by search, possibly null
@@ -171,8 +170,9 @@ public class Coursemanager1 {
                 int j = 0;
                 while (j < result.length) {
                     if (result[gradeNames.length - j - 1] > 0) {
-                        output.println(Integer.toString(result[gradeNames.length - j - 1])
-                            + " students with grade " + gradeNames[gradeNames.length - j - 1]);
+                        output.println(Integer.toString(result[gradeNames.length
+                            - j - 1]) + " students with grade "
+                            + gradeNames[gradeNames.length - j - 1]);
                     }
                     j++;
                 }

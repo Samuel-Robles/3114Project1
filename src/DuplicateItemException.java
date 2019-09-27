@@ -1,8 +1,10 @@
 
-
 // -------------------------------------------------------------------------
 /**
  * An exception for an add called on an item already in a tree
+ * 
+ * @author John Hoskinson <johnh98>
+ * @version 9/22/2019
  */
 public class DuplicateItemException extends RuntimeException {
     /**

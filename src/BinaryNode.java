@@ -1,5 +1,16 @@
 
-
+/**
+ * This class represents a node in a BST. It holds information (such as left and
+ * right neighbors)
+ * and can be modified
+ * 
+ * @author Sam Robles <robleshs>
+ * @author John Hoskinson <johnh98>
+ * @version 9/21/19
+ * 
+ * @param <T>
+ *            the type held in the node
+ */
 public class BinaryNode<T> {
     private T value;
     private BinaryNode<T> left;
@@ -32,7 +43,7 @@ public class BinaryNode<T> {
     /**
      * Set the data value stored in this node.
      * 
-     * @param value
+     * @param newValue
      *            the new data value to set
      */
     public void setValue(T newValue) {
@@ -54,11 +65,11 @@ public class BinaryNode<T> {
     /**
      * Set this node's left child.
      * 
-     * @param value
+     * @param valueHeld
      *            the node to point to as the left child.
      */
-    public void setLeft(BinaryNode<T> value) {
-        left = value;
+    public void setLeft(BinaryNode<T> valueHeld) {
+        left = valueHeld;
     }
 
 
@@ -77,11 +88,11 @@ public class BinaryNode<T> {
     /**
      * Set this node's right child.
      * 
-     * @param value
+     * @param valueHeld
      *            the node to point to as the right child.
      */
-    public void setRight(BinaryNode<T> value) {
-        right = value;
+    public void setRight(BinaryNode<T> valueHeld) {
+        right = valueHeld;
     }
 
 

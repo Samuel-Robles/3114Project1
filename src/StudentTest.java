@@ -1,11 +1,11 @@
 
-
 import student.TestCase;
 
 /**
  * Tests all of the methods of the Student class
  * 
- * @author robleshs
+ * @author Sam Robles <robleshs>
+ * @version 9/25/2019
  *
  */
 public class StudentTest extends TestCase {
@@ -28,9 +28,9 @@ public class StudentTest extends TestCase {
      * Tests getGrade, setGrade, and the other getters
      */
     public void testGettersSetters() {
-        assertTrue(tester.getGrade() == 0);
+        assertEquals(tester.getGrade(), 0);
         tester.setGrade(100);
-        assertTrue(tester.getGrade() == 100);
+        assertEquals(tester.getGrade(), 100);
 
         assertTrue(tester.getID().equals("ID"));
         assertTrue(tester.getFirstName().equals("first"));

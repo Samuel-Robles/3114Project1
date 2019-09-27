@@ -1,5 +1,4 @@
 
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,7 +7,8 @@ import student.TestCase;;
 /**
  * Tests all of the methods of the section class
  * 
- * @author robleshs
+ * @author Sam Robles <robleshs>
+ * @version 9/25/2019
  *
  */
 public class SectionTest extends TestCase {
@@ -19,7 +19,7 @@ public class SectionTest extends TestCase {
     private Section tester;
 
     // Writes to the output file
-    private FileWriter outWriter;
+    // private FileWriter outWriter;
     // Wraps outWriter in order to write safely
     private PrintWriter outFile;
 
@@ -31,7 +31,7 @@ public class SectionTest extends TestCase {
      */
     public void setUp() throws IOException {
         tester = new Section(1);
-        outWriter = new FileWriter("TestOutput.txt");
+        FileWriter outWriter = new FileWriter("TestOutput.txt");
         outFile = new PrintWriter(outWriter);
     }
 
@@ -103,7 +103,9 @@ public class SectionTest extends TestCase {
     }
 
 
-    // Tests the removeSection method
+    /**
+     * Tests the removeSection method
+     */
     public void testRemoveSection() {
 
         // Sets up a few students in the section

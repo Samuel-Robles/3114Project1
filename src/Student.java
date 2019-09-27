@@ -1,5 +1,13 @@
 
-
+/**
+ * This class represents a student object
+ * It contains information such as the students name, id,
+ * and grade, all of which can be modified using methods in the class
+ * 
+ * @author John Hoskinson <johnh98>
+ * @version 9/23/2019
+ *
+ */
 public class Student implements ClassMember {
 
     private String firstName;
