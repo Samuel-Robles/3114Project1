@@ -62,8 +62,8 @@ public class StudentTest extends TestCase {
         Student test4 = new Student("Nikola", "Bart", "0003");
 
         assertEquals(0, test1.compareTo(test2));
-        assertTrue(0 != test1.compareTo(test3));
-        assertTrue(0 != test1.compareTo(test4));
+        assertTrue(0 > test1.compareTo(test3));
+        assertTrue( 0 < test1.compareTo(test4));
     }
 
 }

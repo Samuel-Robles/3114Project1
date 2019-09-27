@@ -145,8 +145,9 @@ public class Coursemanager1 {
                 int newScore = Integer.parseInt(lineSpl[1]);
                 if (!isStud) {
                     output.println(
-                        "score command can only be called after an insert command"
-                            + " or a successful search command with one exact output.");
+                        "score command can only be called after an "
+                        + "insert command or a successful search "
+                        + "command with one exact output.");
                 }
                 else if (newScore >= 0 && newScore <= 100) {
                     currStud.setGrade(newScore);

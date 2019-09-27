@@ -2,7 +2,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import student.TestCase;;
+import student.TestCase;
 
 /**
  * Tests all of the methods of the section class
@@ -117,6 +117,12 @@ public class SectionTest extends TestCase {
         tester.remove("Bart", "Simpson", outFile);
         //Checks that remove has executed properly
         assertEquals(tester.getSize(), 4);
+        String dump = tester.dumpSection();
+        String comp = "010005, B Simpson, score = 0, " + '\n' +
+            "010004, Bjort Simpson, score = 0, " + '\n' +
+            "010002, Bort Simpson, score = 0, " + '\n' +
+            "010003, Burt Simpson, score = 0, " + '\n';
+        assertTrue(dump.equalsIgnoreCase(comp));
     }
 
 
