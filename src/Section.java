@@ -1,8 +1,9 @@
+
 /**
  * 
  */
 
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 
 /**
  * This class represents a section of a course. It contains a binary search tree
@@ -56,14 +57,11 @@ public class Section {
      * @param last
      *            the students last name
      * 
-     * @param output
-     *            is the output file for the program to print result to
-     * 
      * @return the student record that was just created (or the students
      *         existing
      *         record if the student was already in the section)
      */
-    public Student insert(String first, String last, PrintWriter output) {
+    public Student insert(String first, String last) {
         /*
          * So this bad boy is a mess basically
          * First we make a placeholder student, iterate our size and id
@@ -87,14 +85,14 @@ public class Section {
             newStu = (Student)students.find(newStu);
             String err1 = first + " " + last + " is already in section "
                 + sectionNum;
-            output.println(err1);
+            System.out.println(err1);
             String err2 = newStu.getID() + ", " + newStu.getFirstName() + " "
                 + newStu.getLastName() + ", score = " + Integer.toString(newStu
                     .getGrade());
-            output.println(err2);
+            System.out.println(err2);
             return newStu;
         }
-        output.println(first + " " + last + " inserted");
+        System.out.println(first + " " + last + " inserted");
         return newStu;
     }
 
@@ -106,10 +104,8 @@ public class Section {
      *            The students first name
      * @param last
      *            The students last name
-     * @param output
-     *            is the output file to print results to
      */
-    public void remove(String first, String last, PrintWriter output) {
+    public void remove(String first, String last) {
         /*
          * Create new student placeholder and decrement size
          * Try to remove student
@@ -130,7 +126,7 @@ public class Section {
             err = "Remove failed. Student " + first + " " + last
                 + " doesn't exist in section " + Integer.toString(sectionNum);
         }
-        output.println(err);
+        System.out.println(err);
 
     }
 
