@@ -30,7 +30,8 @@ import java.util.Scanner;
  * Contains the main method that handles input and output
  * 
  * @version 2019.09.26
- * @author John Hoskinson(johnh98@vt.edu) Sam Robles(robleshs@vt.edu)
+ * @author John Hoskinson(johnh98@vt.edu) 
+ * @author Sam Robles(robleshs@vt.edu)
  *
  */
 public class Coursemanager1 {

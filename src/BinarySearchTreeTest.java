@@ -119,8 +119,8 @@ public class BinarySearchTreeTest extends TestCase {
      * Tests toString()
      */
     public void testToString() {
-        String none = "()";
-        String full = "(Test 0, Test 1, Test 2)";
+        String none = "";
+        String full = "Test 0, \nTest 1, \nTest 2, \n";
         String strE = bSTree.toString();
         for (int i = 0; i < 3; i++) {
             bSTree.insert("Test " + i);

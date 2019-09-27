@@ -28,6 +28,7 @@ public class SectionTest extends TestCase {
      * Sets up the tests
      * 
      * @throws IOException
+     *             in the case of initialization errors with writers
      */
     public void setUp() throws IOException {
         tester = new Section(1);
@@ -101,6 +102,22 @@ public class SectionTest extends TestCase {
         assertEquals(1, tester.getSize());
 
     }
+    
+    /**
+     * Tests a specific removal case with two children when the right has an existing child
+     */
+    public void testRemoveBort() {
+        //Creates a tree with Bart at the root
+        tester.insert("Bart", "Simpson", outFile);
+        tester.insert("Bort", "Simpson", outFile);
+        tester.insert("Burt", "Simpson", outFile);
+        tester.insert("Bjort", "Simpson", outFile);
+        tester.insert("B", "Simpson", outFile);
+        //removes the root with two children
+        tester.remove("Bart", "Simpson", outFile);
+        //Checks that remove has executed properly
+        assertEquals(tester.getSize(), 4);
+    }
 
 
     /**
@@ -143,7 +160,7 @@ public class SectionTest extends TestCase {
         assertTrue(test1[0].getFirstName().equalsIgnoreCase("bart"));
 
         // Removes the student, then tests for when there is a single
-        // nonmatching student
+        // non-matching student
         tester.remove("Bart", "Simpson", outFile);
 
         tester.insert("Bart", "Simps", outFile);
@@ -268,7 +285,7 @@ public class SectionTest extends TestCase {
         assertEquals(tester.grade()[10], 1);
         assertEquals(tester.grade()[11], 1);
 
-        // Adds another student to prove that it updates correclty
+        // Adds another student to prove that it updates correctly
         tester.insert("Caesar", "Zeppeli", outFile).setGrade(92);
         assertEquals(tester.grade()[0], 2);
         assertEquals(tester.grade()[1], 1);

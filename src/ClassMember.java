@@ -10,7 +10,7 @@ public interface ClassMember extends Comparable<ClassMember> {
     /**
      * A method that will allow for students to be compared
      * 
-     * @param compMember,
+     * @param compMember
      *            the student its being compared to
      * @return an integer based on their relationship
      */
