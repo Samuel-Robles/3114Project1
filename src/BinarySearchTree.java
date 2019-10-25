@@ -282,7 +282,7 @@ public class BinarySearchTree<T extends Comparable<? super T>> {
             return "";
         }
         else {
-            return (root.toString() + ", \n");
+            return (root.toString() + " \n");
         }
     }
 }
